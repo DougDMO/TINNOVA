@@ -1,20 +1,19 @@
 describe('Crud API Trello', () => {
   it('Criar novo board', () => {
-    cy.request({
-      method: 'GET',
-      url: `https://api.trello.com/1/members/me/boards?fields=name,url&key=${Cypress.env('apiKey')}&token=${Cypress.env('Token')}`,
-    })
+    cy.CriarBoard()
+  })
+  it('Criar uma Lista', () => {
+    cy.CriarLista()
   })
 
   it('Criar um card', () => {
-    cy.visit('https://example.cypress.io')
+    cy.CriarCard()
   })
 
   it('Excluir um card', () => {
-    cy.visit('https://example.cypress.io')
+    cy.deleteApi('cards',Cypress.env('card_id'))
   })
-
   it('Excluir um board', () => {
-    cy.visit('https://example.cypress.io')
+    cy.deleteApi('boards',Cypress.env('board_id'))
   })
 })
